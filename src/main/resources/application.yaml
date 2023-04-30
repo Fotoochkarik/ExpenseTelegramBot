@@ -1,0 +1,10 @@
+server:
+  port: 8081
+bot:
+  name: ${app.bot.name}
+  token: ${app.bot.token}
+feign:
+  report:
+    host: ${app.feign.report.host}
+  receipt-collector:
+    host: ${app.feign.receipt-collector.host}
