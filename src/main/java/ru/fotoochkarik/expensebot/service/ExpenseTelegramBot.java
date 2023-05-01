@@ -3,11 +3,7 @@ package ru.fotoochkarik.expensebot.service;
 import static java.util.Objects.nonNull;
 import static java.util.Objects.requireNonNull;
 
-import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Optional;
@@ -224,10 +220,9 @@ public class ExpenseTelegramBot extends TelegramLongPollingBot implements BotCom
     String[] splitRequest = message.getText().trim().split(" ");
     log.info(Arrays.toString(splitRequest));
     var sum = convertSum(message.getChatId(), splitRequest[0]);
-    ZonedDateTime requestDate = ZonedDateTime.now();
+    var requestDate = LocalDate.now();
     if (splitRequest.length > 1) {
-      var parseDate = LocalDate.parse(splitRequest[1], DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-      requestDate = ZonedDateTime.of(parseDate, LocalTime.MIN, ZoneId.systemDefault());
+      requestDate  = LocalDate.parse(splitRequest[1], DateTimeFormatter.ofPattern("dd-MM-yyyy"));
     }
     if (nonNull(sum)) {
       var expenseResponse = reportClient.addSpendItem(
@@ -240,11 +235,12 @@ public class ExpenseTelegramBot extends TelegramLongPollingBot implements BotCom
       sendMessage(
           message.getChatId(),
           ParseMode.MARKDOWNV2,
-          String.format("_Add %s sum %s to %s %s_ \uD83D\uDCC4",
+          String.format("_Add %s sum %s to %s %s and total sum: %s_ \uD83D\uDCC4",
               expenseResponse.getType().getValue(),
-              expenseResponse.getTotalSum(),
+              expenseResponse.getSum(),
               expenseResponse.getMonth(),
-              expenseResponse.getYear()
+              expenseResponse.getYear(),
+              expenseResponse.getTotalSum()
           ).replace(".", ",")
       );
     }

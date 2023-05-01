@@ -1,6 +1,6 @@
 package ru.fotoochkarik.expensebot.data.dto;
 
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +13,6 @@ public class ExpenseRequest {
 
   private Expense type;
   private double sum;
-  private ZonedDateTime payDate;
+  private LocalDate payDate;
 
 }

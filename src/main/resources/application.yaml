@@ -5,6 +5,6 @@ bot:
   token: ${app.bot.token}
 feign:
   report:
-    host: ${app.feign.report.host}
+    host: ${MS_REPORT_HOST:http://localhost:9080/api/v1}
   receipt-collector:
-    host: ${app.feign.receipt-collector.host}
+    host: ${MS_RECEIPT_COLLECTOR_HOST:http://localhost:8080/receipt}

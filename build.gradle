@@ -7,6 +7,7 @@ plugins {
 group = 'ru.fotoochkarik'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 configurations {
     compileOnly {
@@ -36,4 +37,13 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+jar {
+    enabled = true
+}
+
+bootJar {
+    archiveFileName = 'expense-telegram-bot.jar'
+    launchScript()
 }

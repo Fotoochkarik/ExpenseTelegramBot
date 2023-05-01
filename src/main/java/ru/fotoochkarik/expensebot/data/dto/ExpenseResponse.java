@@ -12,6 +12,7 @@ import ru.fotoochkarik.expensebot.data.enums.Expense;
 public class ExpenseResponse {
 
   private Expense type;
+  private double sum;
   private double totalSum;
   private Month month;
   private Integer year;
