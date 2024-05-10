@@ -29,7 +29,7 @@ import ru.fotoochkarik.expensebot.config.BotConfig;
 import ru.fotoochkarik.expensebot.data.BotCommands;
 import ru.fotoochkarik.expensebot.data.Buttons;
 import ru.fotoochkarik.expensebot.data.dto.ExpenseRequest;
-import ru.fotoochkarik.expensebot.data.dto.SaveRequest;
+import ru.fotoochkarik.expensebot.data.dto.CheckCollectorRequest;
 import ru.fotoochkarik.expensebot.data.enums.Action;
 import ru.fotoochkarik.expensebot.data.enums.Expense;
 import ru.fotoochkarik.expensebot.integretion.feign.InternalReportClient;
@@ -143,7 +143,7 @@ public class ExpenseTelegramBot extends TelegramLongPollingBot implements BotCom
       if (nonNull(choseExpense)) {
         switch (choseExpense) {
           case EVERYDAY -> {
-            var bodyReceiptInfo = collectorFeignClient.saveReceipt(new SaveRequest(message.getText()));
+            var bodyReceiptInfo = collectorFeignClient.saveReceipt(new CheckCollectorRequest(message.getText()));
             sendMessage(
                 message.getChatId(),
                 ParseMode.MARKDOWNV2,

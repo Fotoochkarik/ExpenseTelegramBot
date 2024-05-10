@@ -1,7 +1,7 @@
 package ru.fotoochkarik.expensebot.integretion.feign;
 
 import ru.fotoochkarik.expensebot.data.dto.ReceiptShortInfo;
-import ru.fotoochkarik.expensebot.data.dto.SaveRequest;
+import ru.fotoochkarik.expensebot.data.dto.CheckCollectorRequest;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 )
 public interface ReceiptCollectorClient {
 
-  @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-  ReceiptShortInfo saveReceipt(SaveRequest request);
+  @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, value = "/api/latest/receipt")
+  ReceiptShortInfo saveReceipt(CheckCollectorRequest request);
 
 }

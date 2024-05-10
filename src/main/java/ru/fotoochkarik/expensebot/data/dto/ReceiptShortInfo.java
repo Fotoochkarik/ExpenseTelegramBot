@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public record ReceiptShortInfo(LocalDateTime dateTime,
-                               float totalSum,
+                               Double totalSum,
                                List<ItemShortInfo> items) {
 
 }
