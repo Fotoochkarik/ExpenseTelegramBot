@@ -8,12 +8,15 @@ import org.springframework.context.annotation.PropertySource;
 @Getter
 @Configuration
 @PropertySource("classpath:application.yaml")
-public class BotConfig {
+public class BotProperties {
 
-  @Value("${bot.name}")
+  @Value("${service.bot.name}")
   String botName;
 
-  @Value("${bot.token}")
+  @Value("${service.bot.token}")
   String token;
+
+  @Value("${service.file_storage.uri}")
+  String fileStorage;
 
 }

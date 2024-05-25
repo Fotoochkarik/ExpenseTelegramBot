@@ -1,5 +1,7 @@
 package ru.fotoochkarik.expensebot.service;
 
+import static java.util.Objects.nonNull;
+
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +17,8 @@ public class ExpenseModeService {
   private static final Map<Long, Action> choseAction = new ConcurrentHashMap<>();
 
   public static Action getChoseAction(long chatId) {
-    return choseAction.get(chatId);
+    final Action action = choseAction.get(chatId);
+    return nonNull(action) ? action : Action.PASS;
   }
 
   public static void setChoseAction(long chatId, Action action) {
@@ -27,7 +30,8 @@ public class ExpenseModeService {
   }
 
   public static Expense getChoseExpense(long chatId) {
-    return choseExpense.get(chatId);
+    final Expense expense = choseExpense.get(chatId);
+    return nonNull(expense) ? expense : Expense.PASS;
   }
 
   public static void setChoseExpense(long chatId, Expense expense) {

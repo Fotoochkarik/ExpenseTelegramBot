@@ -4,6 +4,10 @@ import lombok.Getter;
 
 @Getter
 public enum Action {
+
   REPORT,
-  DOWNLOAD_BY_YEAR
+  DOWNLOAD_REPORT,
+  SPEND,
+  PASS
+
 }

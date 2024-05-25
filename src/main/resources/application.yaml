@@ -1,10 +1,19 @@
 server:
   port: 8081
-bot:
-  name: ${app.bot.name}
-  token: ${app.bot.token}
+
 feign:
   report:
     host: ${MS_REPORT_HOST:http://localhost:9080/api/v1}
   receipt-collector:
     host: ${MS_RECEIPT_COLLECTOR_HOST:http://localhost:8080/receipt}
+
+service:
+  tg-host: https://api.telegram.org/
+  bot:
+    name: ${app.bot.name}
+    token: ${app.bot.token}
+
+  file_info:
+    uri: https://api.telegram.org/bot{token}/getFile?file_id={fileId}
+  file_storage:
+    uri: https://api.telegram.org/file/bot{token}/{filePath}

@@ -6,8 +6,9 @@ public enum Expense {
 
   EVERYDAY("everyday"),
   DEBT("debt"),
-  COMMUNAL_SERVICE("communal service"),
-  OTHER("other");
+  COMMUNAL("communal"),
+  OTHER("other"),
+  PASS("pass");
 
   Expense(String value) {
     this.value = value;
